@@ -53,25 +53,19 @@ public class CategoryRepo {
         DatabaseManager.getInstance().closeDatabase();
     }
 
-    public List<String> getAllCategory(){
-        List categories = new ArrayList();
+   public List<String> getAllCategory(){
+       List<String> name = new ArrayList<String>();
 
-        Cursor cursor = db.query(Category.TABLE,Category_Columns,null,null,null,null,null);
-        cursor.moveToFirst();
-        while(!cursor.isAfterLast()){
-            category = parseCategory(cursor);
-            categories.add(category);
-            cursor.moveToNext();
-        }
+       String selectQuery = "SELECT * FROM " + Category.TABLE;
 
-        cursor.close();
-        return categories;
-    }
+       Cursor cursor = db.rawQuery(selectQuery,null);
 
-    private Category parseCategory(Cursor cursor){
-        Category category = new Category();
-        category.setCategoryId((cursor.getInt(0)));
-        category.setName((cursor.getString(1)));
-        return category;
-    }
+       if(cursor.moveToFirst()){
+           do{
+               name.add(cursor.getString(1));
+           }while(cursor.moveToNext());
+       }
+       cursor.close();
+       return name;
+   }
 }

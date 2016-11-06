@@ -40,12 +40,14 @@
         android:layout_marginTop="49dp"
         android:id="@+id/btnAdd" />
 
-    <ListView
+    <Spinner
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/btnAdd"
-        android:layout_alignRight="@+id/editText"
-        android:layout_alignEnd="@+id/editText"
-        android:layout_marginTop="108dp"
-        android:id="@+id/list" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="72dp"
+        android:id="@+id/spinner" />
+
+
 </RelativeLayout>
